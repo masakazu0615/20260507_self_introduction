@@ -1,0 +1,218 @@
+@charset "UTF-8";
+
+/* ベーススタイル（全体の基本設定） */
+:root {
+    /* パステル系のカラーパレット（色の設定） */
+    --bg-color: #fdfaf6; /* やさしいクリーム色（背景全体） */
+    --card-bg: #ffffff; /* カードの背景は白 */
+    --text-main: #5c544d; /* 柔らかいこげ茶色（読みやすさ重視） */
+    --text-sub: #8a7e75; /* 少し薄い茶色（サブテキスト用） */
+    --accent-color: #ffb7b2; /* パステルピンク（アクセント・目立たせる色） */
+    --accent-light: #ffe5e3; /* 薄いピンク（背景の装飾など） */
+    --shadow-color: rgba(92, 84, 77, 0.08); /* やさしい影の色 */
+}
+
+/* ブラウザのデフォルトの余白をリセット（見た目を整えやすくするため） */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* 丸みのある、やさしい雰囲気のフォントを指定（Google Fonts） */
+    font-family: 'Zen Maru Gothic', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.8; /* 行間を少し広めにして読みやすく */
+    min-height: 100vh; /* 画面の高さいっぱいを最小サイズとする */
+    display: flex;
+    justify-content: center; /* 左右の中央に配置 */
+    align-items: center; /* 上下の中央に配置 */
+    padding: 20px;
+    /* 背景にふんわりとした丸いグラデーションを配置して華やかさをプラス */
+    background-image: radial-gradient(circle at 10% 20%, #fff0f0 0%, transparent 30%),
+                      radial-gradient(circle at 90% 80%, #eef5ff 0%, transparent 30%);
+}
+
+/* 画面中央に配置するコンテナ */
+.container {
+    width: 100%;
+    max-width: 650px; /* パソコンで見たときに広がりすぎないように制限 */
+}
+
+/* プロフィールカード本体のスタイル */
+.profile-card {
+    background: var(--card-bg);
+    border-radius: 24px; /* 角を丸くする */
+    padding: 45px;
+    /* ふんわりとした影をつける */
+    box-shadow: 0 10px 30px var(--shadow-color),
+                0 1px 3px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease; /* マウスを乗せた時のアニメーション準備 */
+}
+
+/* マウスをカードに乗せた時の効果 */
+.profile-card:hover {
+    transform: translateY(-5px); /* 少し上に浮き上がる */
+}
+
+/* 上部（写真と名前）のレイアウト */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* 写真と名前の間の隙間 */
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 2px dashed var(--accent-light); /* 薄いピンクの点線で区切る */
+}
+
+/* プロフィール写真の枠 */
+.profile-image-frame {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%; /* まん丸にする */
+    /* 背景を斜めのグラデーションにする */
+    background: linear-gradient(135deg, var(--accent-light), #ffffff);
+    border: 4px solid var(--card-bg);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+/* プロフィール画像のスタイル */
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像の縦横比を崩さずに枠にピタッと収める */
+}
+
+/* 名前と職業の部分 */
+.profile-title {
+    flex-grow: 1;
+}
+
+/* 職業のバッジ風スタイル */
+.job {
+    font-size: 0.95rem;
+    color: #e56b6f; /* 文字が読みやすいように少し濃い色に */
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: var(--accent-light);
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px; /* 角丸 */
+}
+
+/* 名前のスタイル */
+h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* 各セクション（自己紹介、趣味）のスタイル */
+.section {
+    margin-bottom: 35px;
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+/* 見出し（自己紹介、趣味）のスタイル */
+h2 {
+    font-size: 1.3rem;
+    color: var(--text-main);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 見出しの左側に縦線を付ける装飾 */
+h2::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 22px;
+    background-color: var(--accent-color);
+    border-radius: 3px;
+}
+
+/* 自己紹介文の段落 */
+.about p {
+    margin-bottom: 1.2em;
+}
+
+.about p:last-child {
+    margin-bottom: 0;
+}
+
+/* 趣味リストのスタイル */
+.hobby-list {
+    list-style: none; /* デフォルトの箇条書き（・）を消す */
+    display: flex;
+    flex-wrap: wrap; /* 横に並びきらない場合は改行する */
+    gap: 15px; /* 項目間の隙間 */
+}
+
+/* 趣味の各項目（ボタン風） */
+.hobby-list li {
+    background-color: var(--bg-color);
+    padding: 12px 24px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: var(--text-main);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease; /* マウスを乗せた時のなめらかな変化 */
+    cursor: default;
+}
+
+/* マウスを趣味の項目に乗せた時の効果 */
+.hobby-list li:hover {
+    background-color: var(--accent-light);
+    color: #e56b6f;
+    transform: scale(1.05); /* 少し大きくなる */
+}
+
+/* 趣味のアイコン（絵文字） */
+.hobby-icon {
+    font-size: 1.3rem;
+}
+
+/* スマホなど、画面幅が小さい場合（480px以下）のレイアウト調整 */
+@media (max-width: 480px) {
+    .profile-card {
+        padding: 30px 20px; /* 余白を少し狭める */
+    }
+
+    .profile-header {
+        flex-direction: column; /* 写真と名前を縦並びにする */
+        text-align: center; /* テキストを中央寄せ */
+        gap: 20px;
+    }
+    
+    .hobby-list {
+        flex-direction: column; /* 趣味リストを縦並びにする */
+    }
+
+    .hobby-list li {
+        justify-content: center; /* 趣味の文字を中央寄せ */
+    }
+    
+    h2 {
+        justify-content: center; /* 見出しを中央寄せ */
+    }
+    
+    /* 中央寄せにした際に、見出しの左の装飾線が不自然にならないように消す */
+    h2::before {
+        display: none; 
+    }
+}

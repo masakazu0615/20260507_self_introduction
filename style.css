@@ -152,16 +152,16 @@ h2::before {
     margin-bottom: 0;
 }
 
-/* 趣味リストのスタイル */
-.hobby-list {
+/* 趣味・食べ物リストのスタイル */
+.hobby-list, .food-list {
     list-style: none; /* デフォルトの箇条書き（・）を消す */
     display: flex;
     flex-wrap: wrap; /* 横に並びきらない場合は改行する */
     gap: 15px; /* 項目間の隙間 */
 }
 
-/* 趣味の各項目（ボタン風） */
-.hobby-list li {
+/* 趣味・食べ物の各項目（ボタン風） */
+.hobby-list li, .food-list li {
     background-color: var(--bg-color);
     padding: 12px 24px;
     border-radius: 16px;
@@ -175,15 +175,15 @@ h2::before {
     cursor: default;
 }
 
-/* マウスを趣味の項目に乗せた時の効果 */
-.hobby-list li:hover {
+/* マウスを項目に乗せた時の効果 */
+.hobby-list li:hover, .food-list li:hover {
     background-color: var(--accent-light);
     color: #e56b6f;
     transform: scale(1.05); /* 少し大きくなる */
 }
 
 /* 趣味のアイコン（絵文字） */
-.hobby-icon {
+.hobby-icon, .food-icon {
     font-size: 1.3rem;
 }
 
@@ -199,11 +199,11 @@ h2::before {
         gap: 20px;
     }
     
-    .hobby-list {
+    .hobby-list, .food-list {
         flex-direction: column; /* 趣味リストを縦並びにする */
     }
 
-    .hobby-list li {
+    .hobby-list li, .food-list li {
         justify-content: center; /* 趣味の文字を中央寄せ */
     }
     

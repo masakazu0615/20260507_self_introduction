@@ -183,8 +183,39 @@ h2::before {
 }
 
 /* 趣味のアイコン（絵文字） */
-.hobby-icon, .food-icon {
+.hobby-icon, .food-icon, .sns-icon {
     font-size: 1.3rem;
+}
+
+/* SNSセクションのスタイル */
+.sns-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* SNSボタン（リンク）の基本設定 */
+.sns-button {
+    text-decoration: none; /* 下線を消す */
+    background-color: var(--bg-color);
+    padding: 12px 24px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    color: var(--text-main);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+/* X（旧Twitter）リンクの固有スタイル */
+.x-link:hover {
+    background-color: #000000; /* Xのブランドカラー（黒） */
+    color: #ffffff; /* 文字を白に */
+    transform: translateY(-3px) scale(1.02); /* 少し上に浮いて大きくなる */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* スマホなど、画面幅が小さい場合（480px以下）のレイアウト調整 */
@@ -199,12 +230,12 @@ h2::before {
         gap: 20px;
     }
     
-    .hobby-list, .food-list {
-        flex-direction: column; /* 趣味リストを縦並びにする */
+    .hobby-list, .food-list, .sns-links {
+        flex-direction: column; /* リストを縦並びにする */
     }
 
-    .hobby-list li, .food-list li {
-        justify-content: center; /* 趣味の文字を中央寄せ */
+    .hobby-list li, .food-list li, .sns-button {
+        justify-content: center; /* 文字を中央寄せ */
     }
     
     h2 {
